@@ -17,22 +17,22 @@ class IllegalCharError (Error): # When lexer finds error it dont support
 #################################################
     
 
-TT_INT = "INT"
-TT_FLOAT = "FLOAT"
-TT_PLUS = "PLUS"
-TT_MINUS = "MINUS"
-TT_MUL = "MUL"
-TT_DIV = "DIV"
-TT_LPAREN = "LPAREN" # left parenthesis
-TT_RPAREN = "RPAREN" # you guessed it
+TT_INT		= "INT"
+TT_FLOAT    = "FLOAT"
+TT_PLUS     = "PLUS"
+TT_MINUS    = "MINUS"
+TT_MUL      = "MUL"
+TT_DIV      = "DIV"
+TT_LPAREN   = "LPAREN" # left parenthesis
+TT_RPAREN   = "RPAREN" # you guessed it
 
 class Token: # stores keywords, operators, etc
-    def __init_(self,type_, value =None):
-        self.type = type_
+    def __init__(self,types, value =None):
+        self.type = types
         self.value = value
     
     def __repr__(self): # Represents token as a string
-        if self.value:
+        if self.value: 
             return f'{self.type}:{self.value}'
         return f'{self.type}'
 
@@ -50,7 +50,7 @@ class Lexer: #breaks down code into tokens
         self.current_char = self.text[self.pos] if self.pos < len(self.text) else None
     
     def make_tokens(self):
-        tokens = []
+        tokens = [ ]
         
         while self.current_char != None:
             if self.current_char in ' \t': #checks for enter
