@@ -107,3 +107,4 @@ def run(text): # Run stuff
     tokens, error = lexer.make_tokens()
     
     return tokens, error
+# test
