@@ -57,7 +57,7 @@ class Lexer: #breaks down code into tokens
                 self.advance()
             elif self.current_char in DIGITS:
                 tokens.append(self.make_number())
-            elif self.current_char == "poop":
+            elif self.current_char == "+":
                 tokens.append(Token(TT_PLUS))
                 self.advance()
             elif self.current_char == "-":
