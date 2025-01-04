@@ -178,8 +178,15 @@ class Parser: # A parser takes data and breaks it into smaller parts. For exampl
             return NumberNode(token)
 
     def term(self): # In math, a number variable or constant multiplied by a variable or variables
-        return self.bin_op(self.factor, (TT_MUL, TT_DIV))
+        left = self.factor()
 
+        while self.current_token in (TT_MUL, TT_DIV):
+            op_token = self.current_token # operator token
+            right = self.factor()
+            left = BinOpNode(left, op_token, right)
+        
+        return left
+    
     def expr(self): # Expression: Combination of one or more terms that an assembler evaluates into a single value
         return self.bin_op(self.term, (TT_PLUS, TT_MINUS))
 
